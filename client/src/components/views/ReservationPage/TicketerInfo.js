@@ -22,9 +22,10 @@ function TicketerInfo(props) {
     const [reservationDate, setReservationDate] = useState('');
 
     const d = new Date();
+    const year = d.getFullYear();
     const _month = d.getMonth();
     const date = d.getDate() + Math.floor(Math.random() * 6);
-    const reservDate = new Date(2020, _month, date).toLocaleDateString("ko-KR");
+    const reservDate = new Date(year, _month, date).toLocaleDateString("ko-KR");
     
     useEffect( () => {
         setReservationDate(reservDate.replace(/ /g,""));
