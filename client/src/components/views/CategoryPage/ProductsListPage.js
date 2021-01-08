@@ -82,6 +82,16 @@ function ProductsListPage(props) {
 
     return (
         <Container>
+            <div 
+                className="categories_number" 
+                style={
+                    {
+                        background: '#fff',
+                        textAlign: 'center'
+                    }
+                }>
+                <p>바로 예매 가능한 전시, 공연 행사가 <span>{totalCount}개</span> 있습니다.</p>
+            </div>
             <ul className="list_all_container" id="#top">
             {
                 List && List.map((list, index) => {

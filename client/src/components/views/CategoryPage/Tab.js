@@ -25,25 +25,15 @@ const TabContainer = styled.div`
 `;
 
 function Tab(props) {
-    // const param = window.location;
-
-    const [totalNumber, setTotalNumber] = useState(0);
-    const [categoryCount, setCategoryCount] = useState([]);
     const [category, setCategory] = useState([]);
 
     useEffect ( () => { 
-        document.getElementById('fullList').click();
-
         const categories_api = `${BASE_URL}/api/categories`;
 
         Axios.get(categories_api)
         .then( response => {
-            let total = 0;
             const categoriesList = response.data.items.map(item => item);
             setCategory(categoriesList);
-            const count = categoriesList.map(item => item.count);  
-            setCategoryCount (count);
-            for(let num of count) setTotalNumber(total += num)
         })
     }, []);
 
@@ -73,11 +63,6 @@ function Tab(props) {
                     }
                 </ul>
             </TabContainer>
-            <div className="categories_number">
-                <p>바로 예매 가능한 전시, 공연 행사가 <span>{totalNumber}개
-                    </span> 있습니다.</p>
-            </div>
-        
         </Container>
     );
 }
